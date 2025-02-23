@@ -17,44 +17,46 @@ function App() {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <div className="App">
-      <h1>Berry Task Flow</h1>
+    <div style={backgroundStyle}> {/* Apply backgroundStyle here */}
+      <div className="App">
+        <h1>Berry Task Flow</h1>
 
-      <div>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Add a new task"
-        />
-        <button
-          className="AddTask-btn"
-          onClick={() => {
-            if (inputValue.trim() !== "") {
-              setTasks([inputValue, ...tasks]); 
-              setInputValue("");
-            }
-          }}
-        >
-          Add Task
-        </button>
+        <div>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Add a new task"
+          />
+          <button
+            className="AddTask-btn"
+            onClick={() => {
+              if (inputValue.trim() !== "") {
+                setTasks([inputValue, ...tasks]); 
+                setInputValue("");
+              }
+            }}
+          >
+            Add Task
+          </button>
+        </div>
+
+        <ul className="Task-txt">
+          {tasks.map((task, index) => (
+            <li key={index}>
+              {task}
+              <button
+                onClick={() => {
+                  const newTasks = tasks.filter((_, i) => i !== index); 
+                  setTasks(newTasks);
+                }}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <ul className="Task-txt">
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task}
-            <button
-              onClick={() => {
-                const newTasks = tasks.filter((_, i) => i !== index); 
-                setTasks(newTasks);
-              }}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
