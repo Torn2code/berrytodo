@@ -17,7 +17,7 @@ function App() {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <div style={backgroundStyle}> {/* Apply backgroundStyle here */}
+    <div style={backgroundStyle}>
       <div className="App">
         <h1>Berry Task Flow</h1>
 
@@ -32,7 +32,7 @@ function App() {
             className="AddTask-btn"
             onClick={() => {
               if (inputValue.trim() !== "") {
-                setTasks([inputValue, ...tasks]); 
+                setTasks([inputValue, ...tasks]);
                 setInputValue("");
               }
             }}
@@ -46,8 +46,9 @@ function App() {
             <li key={index}>
               {task}
               <button
+                className="delete-txt"
                 onClick={() => {
-                  const newTasks = tasks.filter((_, i) => i !== index); 
+                  const newTasks = tasks.filter((_, i) => i !== index);
                   setTasks(newTasks);
                 }}
               >

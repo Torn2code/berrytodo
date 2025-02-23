@@ -11,10 +11,10 @@ body {
 
 .App {
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  max-width: 800px;
+  width: 800px;
   margin: 50px auto;
   font-family: "Agu Display", serif;
   font-optical-sizing: auto;
@@ -23,19 +23,24 @@ body {
   font-variation-settings: "MORF" 0;
 }
 
-.Task-txt{
- 
-    font-family: "Afacad Flux", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-      "slnt" 0;
+.Task-txt {
+  font-family: "Afacad Flux", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 input {
   padding: 10px;
-  margin-right: 10px;
   width: 60%;
   max-width: 300px;
   border: 1px solid #ccc;
@@ -50,6 +55,7 @@ input:focus {
 }
 
 .AddTask-btn {
+  margin-left: 10px;
   background: linear-gradient(45deg, #e73f3f, #fe1f6d);
   border: none;
   border-radius: 25px;
@@ -58,6 +64,7 @@ input:focus {
   font-size: 16px;
   cursor: pointer;
   transition: background 0.3s ease;
+  white-space: nowrap;
 }
 
 .AddTask-btn:hover {
@@ -92,16 +99,22 @@ li button {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
+  border-radius: 25px;
 }
 
 li button:hover {
-  background-color: #e65c00;
+  background-color: #e61300;
 }
 
 @media (max-width: 768px) {
   .App {
     margin: 20px auto;
-    padding: 15px;
+    padding: 10px;
+  }
+
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   input {
