@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const backgroundStyle = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/20944694)`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
+  const [tasks, setTasks] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <h1>Berry Task Flow</h1>
+
+      <div>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Add a new task"
+        />
+        <button
+          className="AddTask-btn"
+          onClick={() => {
+            if (inputValue.trim() !== "") {
+              setTasks([inputValue, ...tasks]); 
+              setInputValue("");
+            }
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Add Task
+        </button>
+      </div>
+
+      <ul className="Task-txt">
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {task}
+            <button
+              onClick={() => {
+                const newTasks = tasks.filter((_, i) => i !== index); 
+                setTasks(newTasks);
+              }}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
